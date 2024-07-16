@@ -131,6 +131,19 @@ app.get('/logout', (req, res) => {
     res.redirect('/mysqllogin');
 });
 
+// Handle Get request for forgot password
+app.get('/passwordreset', (req, res) => {
+    res.render('forgot-password', { title: 'Password Reset' })
+});
+
+/*// Handle post request for forgot password
+const passwordResetRoutes = require('./routes/mysql/about-to-reset-password');
+app.use('/', passwordResetRoutes);*/
+
+// Handle post request to reset user password
+const resetpassword = require('./routes/mysql/reset-password');
+app.use(resetpassword);
+
 // Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
