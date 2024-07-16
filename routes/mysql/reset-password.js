@@ -89,7 +89,7 @@ router.get('/reset/:token', async (req, res) => {
             return res.render('reset-password', { error: 'Password reset token is invalid or has expired.' });
         }
 
-        res.render('reset-password', { token });
+        res.render('reset-password', { token: token });
     } catch (error) {
         console.error('Database error:', error);
         res.render('reset-password', { error: 'Database error. Please try again later.' });
